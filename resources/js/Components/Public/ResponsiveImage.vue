@@ -1,0 +1,4 @@
+<script setup>
+defineProps({ src: String, alt: { type: String, default: '' }, width: [String, Number], height: [String, Number], loading: { type: String, default: 'lazy' }, sizes: String, srcset: String, fit: { type: String, default: 'cover' } });
+</script>
+<template><img v-if="src" :src="src" :alt="alt" :width="width" :height="height" :loading="loading" :sizes="sizes" :srcset="srcset" decoding="async" class="h-full w-full" :class="fit === 'contain' ? 'object-contain' : 'object-cover'"/><div v-else class="grid h-full min-h-40 w-full place-items-center bg-gradient-to-br from-sch-soft-blue to-slate-100" :role="alt ? 'img' : undefined" :aria-label="alt || undefined" :aria-hidden="alt ? undefined : 'true'"><span class="text-xs font-bold uppercase tracking-[0.16em] text-sch-muted">SCH Management</span></div></template>

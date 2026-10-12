@@ -1,0 +1,5 @@
+<script setup>
+import PublicButton from './PublicButton.vue';
+defineProps({ heading: String, description: String, primaryAction: Object, secondaryAction: Object, dark: { type: Boolean, default: true } });
+</script>
+<template><section class="sch-public-cta overflow-hidden rounded-sch-xl border px-6 py-10 sm:px-10 sm:py-12 lg:px-14" :class="dark ? 'sch-public-cta-dark border-white/10 bg-sch-navy text-white shadow-sch-md' : 'border-sch-border bg-white text-sch-ink shadow-sch-sm'"><div class="relative z-10 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between"><div class="max-w-2xl"><h2 class="public-subheading">{{ heading }}</h2><p v-if="description" class="mt-4 text-base leading-7" :class="dark ? 'text-slate-300' : 'text-sch-muted'">{{ description }}</p></div><div class="flex shrink-0 flex-col gap-3 sm:flex-row"><PublicButton v-if="primaryAction" :href="primaryAction.href" :variant="dark ? 'light' : 'primary'" arrow>{{ primaryAction.label }}</PublicButton><PublicButton v-if="secondaryAction" :href="secondaryAction.href" :variant="dark ? 'inverted' : 'secondary'">{{ secondaryAction.label }}</PublicButton></div></div></section></template>

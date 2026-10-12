@@ -1,0 +1,7 @@
+<script setup>
+import { Link } from '@inertiajs/vue3';
+import ResponsiveImage from './ResponsiveImage.vue';
+import PublicIcon from './PublicIcon.vue';
+defineProps({ href: String, title: String, description: String, image: String, imageAlt: String, eyebrow: String });
+</script>
+<template><article class="group flex h-full flex-col overflow-hidden rounded-sch-lg border border-sch-border bg-white shadow-sch-sm transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-sch-md motion-reduce:hover:translate-y-0"><div v-if="image !== undefined" class="aspect-[16/10] overflow-hidden"><ResponsiveImage :src="image" :alt="imageAlt || title" width="720" height="450" class="transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"/></div><div class="flex flex-1 flex-col p-6"><p v-if="eyebrow" class="text-xs font-bold uppercase tracking-[0.14em] text-sch-blue">{{ eyebrow }}</p><h3 class="mt-2 text-xl font-bold tracking-[-0.02em] text-sch-navy">{{ title }}</h3><p v-if="description" class="mt-3 text-sm leading-6 text-sch-muted">{{ description }}</p><Link v-if="href" :href="href" class="mt-6 inline-flex min-h-11 items-center gap-2 self-start rounded-lg text-sm font-bold text-sch-blue"><span>Selengkapnya</span><PublicIcon name="arrow-right" class="size-4 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0"/><span class="sr-only"> tentang {{ title }}</span></Link></div></article></template>
